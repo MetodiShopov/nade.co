@@ -1,0 +1,66 @@
+<hr>
+<div id="nade_main_page">
+    <img src="{{ section.settings.right_background_image | img_url: 'master' }}" alt="hero">
+    <div id="product_background"> 
+        <div>
+
+        </div>
+        <div>
+            <h2>{{ section.settings.product_headline }}</h2>
+            <p>{{ section.settings.product_body }}</p>
+            <h3>{{ section.settings.product_callout }}</h3>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Nade Section",
+        "tag": "div",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "right_background_image",
+                "label": "Right background image"
+            },
+            {
+                "type": "image_picker",
+                "id": "product_background_image",
+                "label": "Product background image"
+            },
+            {
+                "type": "textarea",
+                "id": "product_headline",
+                "label": "Product Headline",
+                "info": "Headline",
+                "placeholder": "Some text"
+            },
+            {
+                "type": "textarea",
+                "id": "product_body",
+                "label": "Product Body",
+                "info": "Body text",
+                "placeholder": "Some text"
+            },
+            {
+                "type": "text",
+                "id": "product_callout",
+                "label": "Product Callout",
+                "info": "Callout",
+                "placeholder": "Some text"
+            }
+        ],
+        "presets": [
+            {
+                "category": "Custom Content",
+                "name":"Nade Section"
+            }
+        ]
+    }
+{% endschema %}
+
+{% stylesheet %}
+    #product_background {
+        background-image: url('{{ block.settings.product_background_image | img_url: 'master'}}');
+    }
+{% endstylesheet %}
