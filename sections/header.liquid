@@ -70,18 +70,20 @@
       {% endif %}
     {% endif %}
 
-    <div class="site-header-sections page-width">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 1% 4%;">
       <nav class="site-header__section site-header__section--button"
         data-site-navigation role="navigation"
       >
-        <button class="site-header__navigation btn btn--clear btn--square"
+      <button class="site-header__navigation btn btn--clear" style="background-color: transparent; padding: 0;"
           aria-expanded="false"
           data-navigation-button
         >
-          <span class="burger-icon burger-icon--top"></span>
+          <img src="{{ section.settings.nav_btn_image | img_url: '250x'}}" alt="get sauced"/>
+          <!-- Old sandwitch image -->
+          <!-- <span class="burger-icon burger-icon--top"></span>
           <span class="burger-icon burger-icon--mid"></span>
           <span class="burger-icon burger-icon--bottom"></span>
-          <span class="icon__fallback-text">{{ 'general.header.menu' | t }}</span>
+          <span class="icon__fallback-text">{{ 'general.header.menu' | t }}</span> -->
         </button>
         <div class="navigation supports-no-js critical-hide" data-section-id="{{ section.id }}" data-section-type="navigation" aria-hidden=true>
           <div class="navigation__container">
@@ -170,7 +172,7 @@
           </div>
         </div>
       </nav>
-      <div class="site-header__section site-header__section--title">
+      <div class="site-header__section site-header__section--title" style="margin-left: -8%">
         {% comment %}
         Use the uploaded logo from theme settings if enabled.
         Site name gets precedence with `h1` tag on homepage, div on other pages.
@@ -215,12 +217,14 @@
         {% endif %}
       </div>
       <div class="site-header__section site-header__section--button">
-        <a href="{{ routes.cart_url }}" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
+        <img src="{{ section.settings.basket_image | img_url: '70x'}}" alt="basket"/>
+        {% comment %} Shoping Cart/Bag functionality {% endcomment %}
+        {% comment %} <a href="{{ routes.cart_url }}" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
           {%- assign icon = 'icon-header-' | append: section.settings.icon %}
           {% include icon %}
           <span class="icon__fallback-text">{{ 'general.header.view_cart' | t }}</span>
           <span class="site-header__cart-bubble{% if cart.item_count > 0 %} site-header__cart-bubble--visible{% endif %}"></span>
-        </a>
+        </a> {% endcomment %}
       </div>
     </div>
   </header>
@@ -252,6 +256,75 @@
     "zh-TW": "標頭"
   },
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "nav_btn_image",
+      "label": "Navigaton button image"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "cs": "Logo",
+        "da": "Logo",
+        "de": "Logo",
+        "en": "Logo",
+        "es": "Logo",
+        "fi": "Logo",
+        "fr": "Logo",
+        "it": "Logo",
+        "ja": "ロゴ",
+        "ko": "로고",
+        "nb": "Logo",
+        "nl": "Logo",
+        "pl": "Logo",
+        "pt-BR": "Logotipo",
+        "pt-PT": "Logótipo",
+        "sv": "Logotyp",
+        "th": "โลโก้",
+        "tr": "Logo",
+        "vi": "Logo",
+        "zh-CN": "logo",
+        "zh-TW": "商標"
+      }
+    },
+    {
+      "id": "logo_max_height",
+      "type": "range",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 15,
+      "label": {
+        "cs": "Výška vlastního loga (v pixelech)",
+        "da": "Højde på det tilpassede logo (i pixels)",
+        "de": "Benutzerdefinierte Logohöhe (Pixel)",
+        "en": "Custom logo height (in pixels)",
+        "es": "Altura del logo personalizado (en píxeles)",
+        "fi": "Mukautettu logon korkeus (pikseleinä)",
+        "fr": "Hauteur personnalisée du logo (en pixels)",
+        "it": "Altezza logo personalizzato (in pixel)",
+        "ja": "ロゴの高さをカスタムする（ピクセルで）",
+        "ko": "사용자 지정 로고 높이 (픽셀)",
+        "nb": "Tilpasset logohøyde (i piksler)",
+        "nl": "Aangepaste logohoogte (in pixels)",
+        "pl": "Niestandardowa wysokość logo (w pikselach)",
+        "pt-BR": "Altura do logotipo personalizado (em pixels)",
+        "pt-PT": "Altura do logótipo personalizado (em píxeis)",
+        "sv": "Anpassad logotypbredd (i pixlar)",
+        "th": "ความสูงของโลโก้แบบกำหนดเอง (เป็นพิกเซล)",
+        "tr": "Özel logo yüksekliği (piksel)",
+        "vi": "Chiều cao logo tùy chỉnh (pixel)",
+        "zh-CN": "自定义 logo 高度（像素）",
+        "zh-TW": "自訂標誌高度 (單位為像素)"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "basket_image",
+      "label": "Cart image"
+    },
     {
       "type": "select",
       "id": "icon",
@@ -334,65 +407,7 @@
         }
       ]
     },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": {
-        "cs": "Logo",
-        "da": "Logo",
-        "de": "Logo",
-        "en": "Logo",
-        "es": "Logo",
-        "fi": "Logo",
-        "fr": "Logo",
-        "it": "Logo",
-        "ja": "ロゴ",
-        "ko": "로고",
-        "nb": "Logo",
-        "nl": "Logo",
-        "pl": "Logo",
-        "pt-BR": "Logotipo",
-        "pt-PT": "Logótipo",
-        "sv": "Logotyp",
-        "th": "โลโก้",
-        "tr": "Logo",
-        "vi": "Logo",
-        "zh-CN": "logo",
-        "zh-TW": "商標"
-      }
-    },
-    {
-      "id": "logo_max_height",
-      "type": "range",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 15,
-      "label": {
-        "cs": "Výška vlastního loga (v pixelech)",
-        "da": "Højde på det tilpassede logo (i pixels)",
-        "de": "Benutzerdefinierte Logohöhe (Pixel)",
-        "en": "Custom logo height (in pixels)",
-        "es": "Altura del logo personalizado (en píxeles)",
-        "fi": "Mukautettu logon korkeus (pikseleinä)",
-        "fr": "Hauteur personnalisée du logo (en pixels)",
-        "it": "Altezza logo personalizzato (in pixel)",
-        "ja": "ロゴの高さをカスタムする（ピクセルで）",
-        "ko": "사용자 지정 로고 높이 (픽셀)",
-        "nb": "Tilpasset logohøyde (i piksler)",
-        "nl": "Aangepaste logohoogte (in pixels)",
-        "pl": "Niestandardowa wysokość logo (w pikselach)",
-        "pt-BR": "Altura do logotipo personalizado (em pixels)",
-        "pt-PT": "Altura do logótipo personalizado (em píxeis)",
-        "sv": "Anpassad logotypbredd (i pixlar)",
-        "th": "ความสูงของโลโก้แบบกำหนดเอง (เป็นพิกเซล)",
-        "tr": "Özel logo yüksekliği (piksel)",
-        "vi": "Chiều cao logo tùy chỉnh (pixel)",
-        "zh-CN": "自定义 logo 高度（像素）",
-        "zh-TW": "自訂標誌高度 (單位為像素)"
-      }
-    },
+    
     {
       "type": "header",
       "content": {
