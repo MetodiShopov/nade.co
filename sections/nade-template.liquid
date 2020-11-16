@@ -1,15 +1,27 @@
-<hr>
+<hr style="margin: 0% 0 2% 0; border: solid 2px {{ settings.color_primary }};">
 <div id="nade_main_page">
-    <img src="{{ section.settings.right_background_image | img_url: 'master' }}" alt="hero">
-    <div id="product_background"> 
-        <div>
-
+    <div id="product_details" style="background-image: url('{{ section.settings.product_background_image | img_url: 'master'}}');"> 
+        <div id="product_bottle_section">
+            <img id="bottle" src="{{ 'bottle.png' | asset_img_url: 'master' }}" alt="bottle"/>
+            <img id="shop_now" src="{{ 'shopnow_button.png' | asset_img_url: '200x' }}" alt="shop now">
         </div>
-        <div>
-            <h2>{{ section.settings.product_headline }}</h2>
+        <div id="product_text_section">
+            <img src="{{ 'createdby_pointer.png' | asset_img_url: '200x' }}" alt="created by pointer"/>
+            <h3>{{ section.settings.product_headline }}</h3>
+            <hr>
             <p>{{ section.settings.product_body }}</p>
-            <h3>{{ section.settings.product_callout }}</h3>
+            <h4>{{ section.settings.product_callout }}</h4>
+            <div id="hover_btns">
+                <img onmouseover="change_image(this)" id="icon_meat" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
+                <img id="icon_veg" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
+                <img id="icon_fish" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
+                <img id="icon_tofu" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
+            </div>
+            
         </div>
+    </div>
+    <div id="background_image">
+        <img src="{{ section.settings.right_background_image | img_url: 'master' }}" alt="hero">
     </div>
 </div>
 
@@ -60,7 +72,56 @@
 {% endschema %}
 
 {% stylesheet %}
-    #product_background {
-        background-image: url('{{ block.settings.product_background_image | img_url: 'master'}}');
+    #nade_main_page {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    #product_details {
+        display: flex;
+        width: 40%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 2;
+        margin-top: 8%;
+        margin-left: 3%;    
+    }
+    #product_bottle_section{
+        width: 50%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+    #product_bottle_section > #bottle {
+        margin-top: -32%;
+        max-width: 170%;
+    }
+    #product_text_section {
+        width: 50%;
+        padding-right: 16%;
+        padding-bottom: 7%;
+        color: white;
+    }
+    #background_image {
+        width: 62%;
+        z-index: 1;
+        margin-left: -8%;
+    }
+    #product_text_section h3, #product_text_section h4 {
+        color: white !important;
+    }
+    #product_text_section h3 {
+        margin-top: 15%;
+    }
+    #product_text_section hr {
+        border: solid 2px white;
+        margin: 3% 0 4% 0;
+    }
+    #product_text_section > img {
+        margin-top: -37%;
+        margin-left: -29%;
+    }
+    #hover_btns{
+        display: flex;
+        justify-content: space-evenly;
     }
 {% endstylesheet %}
