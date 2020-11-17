@@ -3,19 +3,33 @@
     <div id="product_details" style="background-image: url('{{ section.settings.product_background_image | img_url: 'master'}}');"> 
         <div id="product_bottle_section">
             <img id="bottle" src="{{ 'bottle.png' | asset_img_url: 'master' }}" alt="bottle"/>
-            <img id="shop_now" src="{{ 'shopnow_button.png' | asset_img_url: '200x' }}" alt="shop now">
+                <a href="{{ section.settings.btn_shop_now }}">
+                    <img id="shop_now" src="{{ 'shopnow_button.png' | asset_img_url: '200x' }}" alt="shop now">
+                </a>
         </div>
         <div id="product_text_section">
-            <img src="{{ 'createdby_pointer.png' | asset_img_url: '200x' }}" alt="created by pointer"/>
+            <img src="{{ 'createdby_pointer.png' | asset_img_url: 'master' }}" alt="created by pointer"/>
             <h3>{{ section.settings.product_headline }}</h3>
             <hr>
             <p>{{ section.settings.product_body }}</p>
-            <h4>{{ section.settings.product_callout }}</h4>
+            <p id="product_callout">{{ section.settings.product_callout }}</p>
             <div id="hover_btns">
-                <img onmouseover="change_image(this)" id="icon_meat" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
-                <img id="icon_veg" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
-                <img id="icon_fish" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
-                <img id="icon_tofu" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
+                <div class="reveal">
+                    <img class="shown" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
+                    <img class="hidden" src="{{ 'icon_meat_hover.png' | asset_img_url: '55x' }}" alt="Meat">
+                </div>
+                <div class="reveal">
+                    <img class="shown" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
+                    <img class="hidden" src="{{ 'icon_veg_hover.png' | asset_img_url: '55x' }}" alt="Veg">
+                </div>
+                <div class="reveal">
+                    <img class="shown" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
+                    <img class="hidden" src="{{ 'icon_fish_hover.png' | asset_img_url: '55x' }}" alt="Fish">
+                </div>
+                <div class="reveal">
+                    <img class="shown" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
+                    <img class="hidden" src="{{ 'icon_tofu_hover.png' | asset_img_url: '55x' }}" alt="Tofu">
+                </div>
             </div>
             
         </div>
@@ -39,6 +53,11 @@
                 "type": "image_picker",
                 "id": "product_background_image",
                 "label": "Product background image"
+            },
+            {
+                "id": "btn_shop_now",
+                "type": "url",
+                "label": "Shop Now Button link"
             },
             {
                 "type": "textarea",
@@ -72,18 +91,22 @@
 {% endschema %}
 
 {% stylesheet %}
+    body {
+        overflow: auto !important;
+    }
     #nade_main_page {
         display: flex;
         flex-wrap: nowrap;
+        padding: 1% 4%;
     }
     #product_details {
         display: flex;
-        width: 40%;
+        width: 41%;
         background-repeat: no-repeat;
         background-size: contain;
         z-index: 2;
         margin-top: 8%;
-        margin-left: 3%;    
+        padding: 0 4% 3% 4%; 
     }
     #product_bottle_section{
         width: 50%;
@@ -92,19 +115,20 @@
         align-items: center;
     }
     #product_bottle_section > #bottle {
-        margin-top: -32%;
-        max-width: 170%;
+        margin-top: -53%;
+        max-width: 270%;
+    }
+    #product_bottle_section > a {
+        margin-top: -13%;
     }
     #product_text_section {
         width: 50%;
-        padding-right: 16%;
-        padding-bottom: 7%;
         color: white;
     }
     #background_image {
-        width: 62%;
+        width: 67%;
         z-index: 1;
-        margin-left: -8%;
+        margin-left: -4%;
     }
     #product_text_section h3, #product_text_section h4 {
         color: white !important;
@@ -117,11 +141,23 @@
         margin: 3% 0 4% 0;
     }
     #product_text_section > img {
-        margin-top: -37%;
-        margin-left: -29%;
+        margin: -29% 0 0 -20%;
+        max-width: 78%;
     }
     #hover_btns{
         display: flex;
         justify-content: space-evenly;
+    }
+    #product_callout {
+        font-weight: bold;
+    }
+    .hidden {
+        display: none;
+    }
+    .reveal:hover .hidden { 
+        display: block;    
+    }
+    .reveal:hover .shown{
+        display: none;
     }
 {% endstylesheet %}
