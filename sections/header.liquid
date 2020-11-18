@@ -1,3 +1,12 @@
+<style>
+  @media screen and (max-width: 767px) {
+    .site-header__navigation img {
+      max-width: 65%; 
+      margin-top: 8%; 
+      margin-left: -36%;
+    }
+  }
+</style>
 {% if section.settings.enable_transparent and request.page_type == 'index' %}
   <style>
     html:not(.supports-no-js) body:not(.navigation-open) .site-header--transparent:not(.site-header--fixed) .burger-icon {
@@ -74,7 +83,7 @@
       <nav class="site-header__section site-header__section--button"
         data-site-navigation role="navigation"
       >
-      <button class="site-header__navigation btn btn--clear" style="background-color: transparent; padding: 0;"
+      <button class="site-header__navigation btn btn--clear" style="outline: none; background-color: transparent; padding: 0;"
           aria-expanded="false"
           data-navigation-button
         >
