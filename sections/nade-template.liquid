@@ -1,6 +1,6 @@
 <hr style="margin: 0% 0 2% 0; border: solid 2px {{ settings.color_primary }};">
 <div id="nade_main_page">
-    <div id="product_details" style="background-image: url('{{ section.settings.product_background_image | img_url: 'master'}}');"> 
+    <div id="product_details" style="background-image: url('{{ 'shape.png' | asset_img_url: 'master'}}');"> 
         <div id="product_bottle_section">
             <img id="bottle" src="{{ 'bottle.png' | asset_img_url: 'master' }}" alt="bottle"/>
                 <a href="{{ section.settings.btn_shop_now }}">
@@ -50,11 +50,6 @@
                 "label": "Right background image"
             },
             {
-                "type": "image_picker",
-                "id": "product_background_image",
-                "label": "Product background image"
-            },
-            {
                 "id": "btn_shop_now",
                 "type": "url",
                 "label": "Shop Now Button link"
@@ -90,10 +85,7 @@
     }
 {% endschema %}
 
-{% stylesheet %}
-    body {
-        overflow: auto !important;
-    }
+{% style %}
     #nade_main_page {
         display: flex;
         flex-wrap: nowrap;
@@ -130,13 +122,11 @@
         z-index: 1;
         margin-left: -4%;
     }
-    #product_text_section h3, #product_text_section h4 {
+    #product_text_section > h3 {
         color: white !important;
-    }
-    #product_text_section h3 {
         margin-top: 15%;
     }
-    #product_text_section hr {
+    #product_text_section > hr {
         border: solid 2px white;
         margin: 3% 0 4% 0;
     }
@@ -160,4 +150,37 @@
     .reveal:hover .shown{
         display: none;
     }
-{% endstylesheet %}
+    @media screen and (max-width: 767px) {
+        #product_bottle_section > #bottle {
+            margin-top: -50%;
+            max-width: 330%;
+        }
+        #product_bottle_section > a {
+            margin-top: 38%;
+        }
+        #product_details {
+            width: auto;
+            margin-top: 21%;
+            background-image: none !important;
+            background-color: {{ settings.color_primary }};
+        }
+        #product_details h3 {
+            font-size: 1.8rem;
+            line-height: normal;
+            font-weight: bold;
+        } 
+        #product_details p {
+            line-height: normal;
+        }
+        #product_text_section {
+            margin-top: -9%;
+        }
+        #background_image {
+            display: none;
+        }
+        #product_text_section > img {
+            margin: -29% 0 0 -10%;
+            max-width: 83%;
+        }
+    }
+{% endstyle %}
