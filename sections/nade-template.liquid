@@ -157,9 +157,6 @@
         margin-left: -63%;
         max-width: 225%;
     }
-    .product_bottle_section > a {
-        margin-top: -17%;
-    }
     .product_text_section {
         width: 50%;
         color: white;
@@ -234,11 +231,14 @@
             display: flex;
             background-color: {{ settings.color_primary }};
             margin-bottom: 17%;
-            padding: 0 5% 0 0;
         }
         .bottle {
+            margin-left: -105%;
             margin-top: -50%;
-            max-width: 330%;
+            max-width: 310%;
+        }
+        .product_text_section {
+            padding-right: 4%;
         }
         .product_text_section > img {
             margin: -29% 0 0 -10%;
@@ -249,11 +249,15 @@
             margin: 0 0 22% 0;
         }
         .product_details_bottom_wrapper {
+            display: block;
             background-color: {{ settings.color_primary }};
             padding: 5%;
         }
         .product_details_bottom_wrapper p {
             text-align: center;
+        }
+        .hover_btns {
+            width: auto;
         }
     }
 {% endstyle %}
