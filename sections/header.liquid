@@ -1,9 +1,20 @@
 <style>
+  .site-header__section--title {
+    padding-left: 5%;
+  }
   @media screen and (max-width: 767px) {
-    .site-header__navigation img {
-      max-width: 65%; 
-      margin-top: 8%; 
-      margin-left: -36%;
+    .site-header__section--title {
+      padding-left: 15%;
+    }
+    #nav_img {
+      height: 35px !important;
+      width: 65px;
+      margin-top: 15%;
+    }
+    #right_nav_img {
+      height: 35px !important;
+      width: 175px;
+      margin-top: 10%;
     }
   }
 </style>
@@ -87,7 +98,13 @@
           aria-expanded="false"
           data-navigation-button
         >
-          <img src="{{ section.settings.nav_btn_image | img_url: '250x'}}" alt="get sauced"/>
+        {% capture nav_btn_size %}x{{ section.settings.nav_img_max_height }}{% endcapture %}
+          <style>
+            #nav_img {
+              height: {{ section.settings.nav_img_max_height | append: 'px' }};
+            }
+          </style>
+          <img id="nav_img" src="{{ section.settings.nav_btn_image | img_url: nav_btn_size }}" alt="get sauced"/>
           <!-- Old sandwitch image -->
           <!-- <span class="burger-icon burger-icon--top"></span>
           <span class="burger-icon burger-icon--mid"></span>
@@ -181,7 +198,7 @@
           </div>
         </div>
       </nav>
-      <div class="site-header__section site-header__section--title" style="margin-left: -8%">
+      <div class="site-header__section site-header__section--title">
         {% comment %}
         Use the uploaded logo from theme settings if enabled.
         Site name gets precedence with `h1` tag on homepage, div on other pages.
@@ -226,7 +243,15 @@
         {% endif %}
       </div>
       <div class="site-header__section site-header__section--button">
-        <img src="{{ section.settings.basket_image | img_url: '70x'}}" alt="basket"/>
+        {% capture right_btn_size %}x{{ section.settings.right_img_max_height }}{% endcapture %}
+        <style>
+          #right_nav_img {
+            height: {{ section.settings.right_img_max_height | append: 'px' }};
+          }
+        </style>
+        <a href="{{ section.settings.right_img_url }}">
+          <img id="right_nav_img" src="{{ section.settings.right_navigation_image | img_url: right_btn_size }}" alt="basket"/>
+        </a>
         {% comment %} Shoping Cart/Bag functionality {% endcomment %}
         {% comment %} <a href="{{ routes.cart_url }}" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
           {%- assign icon = 'icon-header-' | append: section.settings.icon %}
@@ -269,6 +294,16 @@
       "type": "image_picker",
       "id": "nav_btn_image",
       "label": "Navigaton button image"
+    },
+    {
+      "id": "nav_img_max_height",
+      "type": "range",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 15,
+      "label": "Image height (in pixels)"
     },
     {
       "type": "image_picker",
@@ -331,8 +366,23 @@
     },
     {
       "type": "image_picker",
-      "id": "basket_image",
+      "id": "right_navigation_image",
       "label": "Cart image"
+    },
+    {
+      "id": "right_img_max_height",
+      "type": "range",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 15,
+      "label": "Image height (in pixels)"
+    },
+    {
+      "id": "right_img_url",
+      "type": "url",
+      "label": "Button url"
     },
     {
       "type": "select",
