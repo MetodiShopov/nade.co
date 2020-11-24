@@ -226,7 +226,7 @@
     .reveal:hover .icon_shown{
         display: none;
     }
-    @media screen and (max-width: 1600px){
+    @media screen and (min-width: 1366px) and (max-width: 1680px){
         #product_details {
             padding: 0 3% 0 3%;
         }
@@ -237,14 +237,25 @@
             margin-top: 15%;
             line-height: 1;
             margin-bottom: 3%;
+            font-size: 2.2rem;
         }
         .product_text_section p {
             margin-bottom: 3%;
+            font-size: 1.6rem;
         }
         .bottle {
             margin-top: -32%;
             margin-left: -72%;
             max-width: 244%;
+        }
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1366px){
+        .product_text_section > h3 {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .product_text_section p {
+            font-size: 1rem;;
         }
     }
     @media screen and (max-width: 767px) {
