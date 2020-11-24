@@ -21,20 +21,28 @@
             </div>
             <div class="hover_btns">
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
-                    <img class="icon_hidden" src="{{ 'icon_meat_hover.png' | asset_img_url: '55x' }}" alt="Meat">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
+                        <img class="icon_hidden" src="{{ 'icon_meat_hover.png' | asset_img_url: '55x' }}" alt="Meat">
+                    </a>
                 </div>
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
-                    <img class="icon_hidden" src="{{ 'icon_veg_hover.png' | asset_img_url: '55x' }}" alt="Veg">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
+                        <img class="icon_hidden" src="{{ 'icon_veg_hover.png' | asset_img_url: '55x' }}" alt="Veg">
+                    </a>
                 </div>
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
-                    <img class="icon_hidden" src="{{ 'icon_fish_hover.png' | asset_img_url: '55x' }}" alt="Fish">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
+                        <img class="icon_hidden" src="{{ 'icon_fish_hover.png' | asset_img_url: '55x' }}" alt="Fish">
+                    </a>
                 </div>
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
-                    <img class="icon_hidden" src="{{ 'icon_tofu_hover.png' | asset_img_url: '55x' }}" alt="Tofu">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
+                        <img class="icon_hidden" src="{{ 'icon_tofu_hover.png' | asset_img_url: '55x' }}" alt="Tofu">
+                    </a>
                 </div>
             </div>
         </div>
@@ -58,20 +66,28 @@
             <p class="product_callout">{{ section.settings.product_callout }}</p>
             <div class="hover_btns">
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
-                    <img class="icon_hidden" src="{{ 'icon_meat_hover.png' | asset_img_url: '55x' }}" alt="Meat">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_meat.png' | asset_img_url: '55x' }}" alt="Meat">
+                        <img class="icon_hidden" src="{{ 'icon_meat_hover.png' | asset_img_url: '55x' }}" alt="Meat">
+                    </a>
                 </div>
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
-                    <img class="icon_hidden" src="{{ 'icon_veg_hover.png' | asset_img_url: '55x' }}" alt="Veg">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_veg.png' | asset_img_url: '55x' }}" alt="Veg">
+                        <img class="icon_hidden" src="{{ 'icon_veg_hover.png' | asset_img_url: '55x' }}" alt="Veg">
+                    </a>
                 </div>
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
-                    <img class="icon_hidden" src="{{ 'icon_fish_hover.png' | asset_img_url: '55x' }}" alt="Fish">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_fish.png' | asset_img_url: '55x' }}" alt="Fish">
+                        <img class="icon_hidden" src="{{ 'icon_fish_hover.png' | asset_img_url: '55x' }}" alt="Fish">
+                    </a>
                 </div>
                 <div class="reveal">
-                    <img class="icon_shown" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
-                    <img class="icon_hidden" src="{{ 'icon_tofu_hover.png' | asset_img_url: '55x' }}" alt="Tofu">
+                    <a href="{{ section.settings.ingredients_btn }}">
+                        <img class="icon_shown" src="{{ 'icon_tofu.png' | asset_img_url: '55x' }}" alt="Tofu">
+                        <img class="icon_hidden" src="{{ 'icon_tofu_hover.png' | asset_img_url: '55x' }}" alt="Tofu">
+                    </a>
                 </div>
             </div>
         </div>
@@ -116,6 +132,11 @@
                 "label": "Product Callout",
                 "info": "Callout",
                 "placeholder": "Some text"
+            },
+            {
+                "id": "ingredients_btn",
+                "type": "url",
+                "label": "Link for all Ingredients buttons" 
             }
         ],
         "presets": [
