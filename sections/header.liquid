@@ -1,20 +1,30 @@
 <style>
-  .site-header__section--title {
-    padding-left: 5%;
+  #bascet_btn {
+    width: auto;
+    height: auto;
+  }
+  #full_bascet {
+    top: 5%;
   }
   @media screen and (max-width: 767px) {
     .site-header__section--title {
-      padding-left: 15%;
+      padding-left: 0;
     }
     #nav_img {
       height: 35px !important;
+      width: 175px;
+      margin-top: 10%;
+    }
+    #bascet_btn {
+      height: 35px !important;
       width: 65px;
-      margin-top: 15%;
     }
     #right_nav_img {
       height: 35px !important;
-      width: 175px;
-      margin-top: 10%;
+    }
+    #full_bascet {
+      top: 0;
+      left: 60%;
     }
   }
 </style>
@@ -249,16 +259,13 @@
             height: {{ section.settings.right_img_max_height | append: 'px' }};
           }
         </style>
-        <a href="{{ section.settings.right_img_url }}">
+        <a href="{{ routes.cart_url }}" id="bascet_btn" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
+          {% comment %} {%- assign icon = 'icon-header-' | append: section.settings.icon %}
+          {% include icon %} {% endcomment %}
           <img id="right_nav_img" src="{{ section.settings.right_navigation_image | img_url: right_btn_size }}" alt="basket"/>
-        </a>
-        {% comment %} Shoping Cart/Bag functionality {% endcomment %}
-        {% comment %} <a href="{{ routes.cart_url }}" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
-          {%- assign icon = 'icon-header-' | append: section.settings.icon %}
-          {% include icon %}
           <span class="icon__fallback-text">{{ 'general.header.view_cart' | t }}</span>
-          <span class="site-header__cart-bubble{% if cart.item_count > 0 %} site-header__cart-bubble--visible{% endif %}"></span>
-        </a> {% endcomment %}
+          <span id="full_bascet" class="site-header__cart-bubble{% if cart.item_count > 0 %} site-header__cart-bubble--visible{% endif %}"></span>
+        </a>
       </div>
     </div>
   </header>
@@ -378,11 +385,6 @@
       "unit": "px",
       "default": 15,
       "label": "Image height (in pixels)"
-    },
-    {
-      "id": "right_img_url",
-      "type": "url",
-      "label": "Button url"
     },
     {
       "type": "select",
