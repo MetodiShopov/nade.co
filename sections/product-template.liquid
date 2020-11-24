@@ -1,3 +1,23 @@
+<style>
+  @media only screen and (min-width: 768px){
+    #wrapper {
+    display: flex;
+    justify-content: center;
+    }
+    #image_side {
+      width: 35%;
+      margin: 0 0 0 auto;
+    }
+    #product_side {
+      margin: 0 auto 0 0;
+    }
+    .product__media-container{
+      margin: 0 auto;
+    }
+  }
+  
+</style>
+
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign current_variant_sale = false -%}
 {% if current_variant.compare_at_price > current_variant.price %}
@@ -5,7 +25,7 @@
 {% endif %}
 {% assign featured_media = current_variant.featured_media | default: product.featured_media %}
 
-<div class="product-template" data-section-id="{{ section.id }}" data-section-type="product-template" data-variant-id="{{ current_variant.id }}" itemscope itemtype="http://schema.org/Product">
+<div id="wrapper" class="product-template" data-section-id="{{ section.id }}" data-section-type="product-template" data-variant-id="{{ current_variant.id }}" itemscope itemtype="http://schema.org/Product">
   <meta itemprop="name" content="{{ product.title }}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ featured_media | img_url: 'grande' }}">
@@ -15,7 +35,7 @@
   Product Featured Media
   ------------------------------------------------------------------------------
   {% endcomment %}
-  <div class="page-width page-width--no-gutter">
+  <div id="image_side" class="page-width page-width--no-gutter">
     {% assign variant_media_ids = '' %}
 
     {%- unless product.has_only_default_variant -%}
@@ -53,7 +73,7 @@
   Product Form & Description
   ------------------------------------------------------------------------------
   {% endcomment %}
-  <div class="product__content page-width">
+  <div id="product_side" class="product__content page-width">
     <div class="grid">
       <div class="grid__item medium-up--push-one-twelfth medium-up--ten-twelfths">
         <div class="product__content-header">
