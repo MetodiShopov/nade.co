@@ -54,7 +54,8 @@
     aria-label="{{ button_text }}"
   >
     <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
-      {{ button_text }}
+      Add to Basket
+      {% comment %} {{ button_text }} {% endcomment %}
     </span>
     <span class="secondary-text" aria-hidden=true data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
   </button>

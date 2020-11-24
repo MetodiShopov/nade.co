@@ -1,34 +1,3 @@
-<style>
-  @media only screen and (min-width: 768px){
-    #wrapper {
-    display: flex;
-    justify-content: center;
-    }
-    #image_side {
-      width: 35%;
-      margin: 0 0 0 auto;
-    }
-    #product_side {
-      width: 35%;
-      margin: 0 auto 0 0;
-    }
-    .product__media-container{
-      margin: 0 auto;
-    }
-    .product__content-main {
-      display: flex;
-      flex-flow: column;
-    }
-    .product__form-container {
-      width: 100%;
-    }
-    .product__description{
-      width: 100%;
-    }
-  }
-  
-</style>
-
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign current_variant_sale = false -%}
 {% if current_variant.compare_at_price > current_variant.price %}
@@ -147,6 +116,23 @@
         </div>
       </div>
     </div>
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Product Nutritional information and Ingredients
+    ------------------------------------------------------------------------------
+    {% endcomment %}
+    <div id="product_nutritions">
+      <p id="info_btn" onclick="drop_down()">{{ section.settings.info_head}}</p>
+      <div id="extra_info_btn" style="display: none;">
+        <dl>
+          <dt>{{ section.settings.nut_info_head}}</dt>
+          <dd>{{ section.settings.nut_info_details}}</dd>
+          <dt>{{ section.settings.ing_info_head}}</dt>
+          <dd>{{ section.settings.ing_info_details}}</dd>
+        </dl>
+      </div>
+    </div>
+
   </div>
 
   {% comment %}
@@ -606,7 +592,95 @@
         "zh-TW": "在圖庫中隱藏子類選項多媒體檔案"
       },
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "info_head",
+      "label": "Header",
+      "placeholder": "Nutritional information and ingredients"
+    },
+    {
+      "type": "text",
+      "id": "nut_info_head",
+      "label": "Nutritional information",
+      "placeholder": "Nutritional information"
+    },
+    {
+      "type": "textarea",
+      "id": "nut_info_details",
+      "label": "Nutritional information Details",
+      "placeholder": "Some text"
+    },
+    {
+      "type": "text",
+      "id": "ing_info_head",
+      "label": "Ingredients",
+      "placeholder": "Ingredients"
+    },
+    {
+      "type": "textarea",
+      "id": "ing_info_details",
+      "label": "Ingredients Details",
+      "placeholder": "Some text"
     }
   ]
 }
 {% endschema %}
+
+{% style %}
+  @media only screen and (min-width: 768px){
+    #wrapper {
+    display: flex;
+    justify-content: center;
+    }
+    #image_side {
+      width: 35%;
+      margin: 0 0 0 auto;
+    }
+    #product_side {
+      width: 35%;
+      margin: 0 auto 0 0;
+    }
+    .product__media-container{
+      margin: 0 auto;
+    }
+    .product__content-main {
+      display: flex;
+      flex-flow: column;
+    }
+    .product__form-container {
+      width: 100%;
+    }
+    .product__description{
+      width: 100%;
+    }
+  }
+  
+  #product_nutritions {
+    margin: 0 auto;
+    padding: 0 9%;
+  }
+  #info_btn {
+    background-color: #f2ae78;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+  #extra_info_btn{
+    background-color: #f2ae78;
+    padding: 1px 10px;
+  }
+  dt {
+    font-weight: bold;
+  }
+  @media screen and (max-width: 767px){
+    #product_nutritions {
+    padding: 0;
+    }
+  }
+{% endstyle %}
