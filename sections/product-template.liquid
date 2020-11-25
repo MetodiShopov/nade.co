@@ -124,12 +124,13 @@
     <div id="product_nutritions">
       <p id="info_btn" onclick="drop_down()">{{ section.settings.info_head}}</p>
       <div id="extra_info_btn" style="display: none;">
-        <dl>
+        <img src="{{ section.settings.nutrition_img | img_url: 'master' }}" alt="Nutrition and ingredients">
+        <!-- <dl>
           <dt>{{ section.settings.nut_info_head}}</dt>
           <dd>{{ section.settings.nut_info_details}}</dd>
           <dt>{{ section.settings.ing_info_head}}</dt>
           <dd>{{ section.settings.ing_info_details}}</dd>
-        </dl>
+        </dl> -->
       </div>
     </div>
 
@@ -598,6 +599,11 @@
       "content": "Ingredients"
     },
     {
+      "type": "image_picker",
+      "id": "nutrition_img",
+      "label": "Nutrition_img"
+    },
+    {
       "type": "text",
       "id": "info_head",
       "label": "Header",
@@ -673,7 +679,6 @@
   }
   #extra_info_btn{
     background-color: #f2ae78;
-    padding: 1px 10px;
   }
   dt {
     font-weight: bold;
