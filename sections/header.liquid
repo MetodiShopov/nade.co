@@ -2,12 +2,28 @@
   body {
     padding-top: 0 !important;
   }
+  #nav_img {
+    max-height: 60px;
+    max-width: none;
+  }
+  #nav_image_fix {
+    line-height: 0;
+  }
+  #right_nav_img {
+    max-height: 60px;
+    max-width: none;
+  }
   #bascet_btn {
     width: auto;
     height: auto;
+    line-height: 0;
   }
   #full_bascet {
     top: 5%;
+  }
+  #nav_hr {
+    margin: 0% 0 2% 0;
+    border: solid 2px {{ settings.color_primary }};
   }
   .site-header__logo-wrapper {
     margin-left: -6%;
@@ -17,16 +33,12 @@
       padding-left: 0;
     }
     #nav_img {
-      height: 35px !important;
-      width: 175px;
-      margin-top: 10%;
-    }
-    #bascet_btn {
-      height: 35px !important;
-      width: 65px;
+      max-height: 30px;
+      max-width: none;
     }
     #right_nav_img {
-      height: 35px !important;
+      max-height: 30px;
+      max-width: none;
     }
     #full_bascet {
       top: 0;
@@ -110,17 +122,11 @@
       <nav class="site-header__section site-header__section--button"
         data-site-navigation role="navigation"
       >
-      <button class="site-header__navigation btn btn--clear" style="outline: none; background-color: transparent; padding: 0;"
+      <button id="nav_image_fix" class="site-header__navigation btn btn--clear" style="outline: none; background-color: transparent; padding: 0;"
           aria-expanded="false"
           data-navigation-button
         >
-        {% capture nav_btn_size %}x{{ section.settings.nav_img_max_height }}{% endcapture %}
-          <style>
-            #nav_img {
-              height: {{ section.settings.nav_img_max_height | append: 'px' }};
-            }
-          </style>
-          <img id="nav_img" src="{{ section.settings.nav_btn_image | img_url: nav_btn_size }}" alt="get sauced"/>
+          <img id="nav_img" src="{{ section.settings.nav_btn_image | img_url: 'master' }}" alt="get sauced"/>
           <!-- Old sandwitch image -->
           <!-- <span class="burger-icon burger-icon--top"></span>
           <span class="burger-icon burger-icon--mid"></span>
@@ -128,6 +134,7 @@
           <span class="icon__fallback-text">{{ 'general.header.menu' | t }}</span> -->
         </button>
         <div class="navigation supports-no-js critical-hide" data-section-id="{{ section.id }}" data-section-type="navigation" aria-hidden=true>
+          <hr style="margin: 0; border: solid 2px {{ settings.color_primary }};">
           <div class="navigation__container">
             <ul class="navigation__links">
               {% for link in linklists[section.settings.primary_navigation].links%}
@@ -235,7 +242,7 @@
               }
             </style>
 
-            <img class="site-header__logo-image" src="{{ section.settings.logo | img_url: image_size }}" srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
+            <img class="site-header__logo-image" src="{{ section.settings.logo | img_url: 'image_size' }}" srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
 
             {% if request.page_type == 'index' and section.settings.enable_transparent %}
               {% if section.settings.transparent_logo == blank %}
@@ -259,16 +266,10 @@
         {% endif %}
       </div>
       <div class="site-header__section site-header__section--button">
-        {% capture right_btn_size %}x{{ section.settings.right_img_max_height }}{% endcapture %}
-        <style>
-          #right_nav_img {
-            height: {{ section.settings.right_img_max_height | append: 'px' }};
-          }
-        </style>
         <a href="{{ routes.cart_url }}" id="bascet_btn" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
           {% comment %} {%- assign icon = 'icon-header-' | append: section.settings.icon %}
           {% include icon %} {% endcomment %}
-          <img id="right_nav_img" src="{{ section.settings.right_navigation_image | img_url: right_btn_size }}" alt="basket"/>
+          <img id="right_nav_img" src="{{ section.settings.right_navigation_image | img_url: 'master' }}" alt="basket"/>
           <span class="icon__fallback-text">{{ 'general.header.view_cart' | t }}</span>
           <span id="full_bascet" class="site-header__cart-bubble{% if cart.item_count > 0 %} site-header__cart-bubble--visible{% endif %}"></span>
         </a>
@@ -276,6 +277,7 @@
     </div>
   </header>
 </div>
+<hr id="nav_hr">
 
 {% schema %}
 {
@@ -309,16 +311,6 @@
       "label": "Navigaton button image"
     },
     {
-      "id": "nav_img_max_height",
-      "type": "range",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 15,
-      "label": "Image height (in pixels)"
-    },
-    {
       "type": "image_picker",
       "id": "logo",
       "label": {
@@ -350,9 +342,9 @@
       "type": "range",
       "min": 10,
       "max": 60,
-      "step": 5,
+      "step": 2,
       "unit": "px",
-      "default": 15,
+      "default": 20,
       "label": {
         "cs": "Výška vlastního loga (v pixelech)",
         "da": "Højde på det tilpassede logo (i pixels)",
@@ -381,16 +373,6 @@
       "type": "image_picker",
       "id": "right_navigation_image",
       "label": "Cart image"
-    },
-    {
-      "id": "right_img_max_height",
-      "type": "range",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 15,
-      "label": "Image height (in pixels)"
     },
     {
       "type": "select",
