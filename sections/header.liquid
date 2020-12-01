@@ -7,10 +7,11 @@
     max-width: none;
   }
   #nav_image_fix {
-    line-height: 0;
+    padding-top: 40px;
+    outline: 2px solid {{ settings.color_primary }};
   }
   #right_nav_img {
-    max-height: 60px;
+    max-height: 50px;
     max-width: none;
   }
   #bascet_btn {
@@ -23,7 +24,7 @@
   }
   #nav_hr {
     margin: 0% 0 2% 0;
-    border: solid 2px {{ settings.color_primary }};
+    border: solid 1px {{ settings.color_primary }};
   }
   .site-header__logo-wrapper {
     margin-left: -6%;
@@ -35,6 +36,9 @@
     #nav_img {
       max-height: 30px;
       max-width: none;
+    }
+    #nav_image_fix {
+      outline: transparent;
     }
     #right_nav_img {
       max-height: 30px;
@@ -122,16 +126,13 @@
       <nav class="site-header__section site-header__section--button"
         data-site-navigation role="navigation"
       >
-      <button id="nav_image_fix" class="site-header__navigation btn btn--clear" style="outline: none; background-color: transparent; padding: 0;"
-          aria-expanded="false"
-          data-navigation-button
-        >
-          <img id="nav_img" src="{{ section.settings.nav_btn_image | img_url: 'master' }}" alt="get sauced"/>
+      <button id="nav_image_fix" class="site-header__navigation btn btn--clear" aria-expanded="false" data-navigation-button>
+          <!-- <img id="nav_img" src="{{ section.settings.nav_btn_image | img_url: 'master' }}" alt="get sauced"/> -->
           <!-- Old sandwitch image -->
-          <!-- <span class="burger-icon burger-icon--top"></span>
+          <span class="burger-icon burger-icon--top"></span>
           <span class="burger-icon burger-icon--mid"></span>
           <span class="burger-icon burger-icon--bottom"></span>
-          <span class="icon__fallback-text">{{ 'general.header.menu' | t }}</span> -->
+          <span class="icon__fallback-text">{{ 'general.header.menu' | t }}</span>
         </button>
         <div class="navigation supports-no-js critical-hide" data-section-id="{{ section.id }}" data-section-type="navigation" aria-hidden=true>
           <hr style="margin: 0; border: solid 2px {{ settings.color_primary }};">
@@ -239,6 +240,17 @@
             <style>
               .site-header__logo-image {
                 height: {{ section.settings.logo_max_height | append: 'px' }};
+                margin-left: 25%;
+              }
+              @media screen and (min-width: 1366px) and (max-width: 1680px){
+                .site-header__logo-image {
+                  margin-left: 21%;
+                }
+              }
+              @media screen and (max-width: 767px){
+                .site-header__logo-image {
+                  margin-left: 0;
+                }
               }
             </style>
 
