@@ -10,7 +10,7 @@
     "color_footer_bg": "#faf5f0",
     "color_main_bg": "#faf5f0",
     "color_secondary_bg": "#faf5f0",
-    "color_product_cards": "#f2ae78",
+    "color_product_cards": "#bf2604",
     "color_form_elements": "#ffffff",
     "color_cart_flag": "#5f0202",
     "type_base_size": "62.5%",
@@ -28,7 +28,7 @@
     "social_tumblr_link": "",
     "social_youtube_link": "",
     "social_vimeo_link": "",
-    "favicon": "shopify:\/\/shop_images\/cart.png",
+    "favicon": "shopify:\/\/shop_images\/logo_03fd1897-1c56-42a3-98c4-39fb19667627.png",
     "checkout_header_image": "",
     "checkout_logo_image": "",
     "checkout_logo_position": "left",
@@ -49,11 +49,9 @@
         "type": "header",
         "settings": {
           "nav_btn_image": "shopify:\/\/shop_images\/getsauced.png",
-          "nav_img_max_height": 60,
           "logo": "shopify:\/\/shop_images\/logo.png",
-          "logo_max_height": 60,
+          "logo_max_height": 50,
           "right_navigation_image": "shopify:\/\/shop_images\/cart.png",
-          "right_img_max_height": 60,
           "icon": "bag",
           "enable_transparent": false,
           "transparent_text_color": "#ffffff",
@@ -101,7 +99,7 @@
           "collection_hero_image_parallax": false,
           "grid_style": "grid",
           "show_spacing": false,
-          "show_vendor": true
+          "show_vendor": false
         }
       },
       "product-template": {
@@ -115,11 +113,7 @@
           "enable_video_looping": false,
           "hide_variant_media": true,
           "nutrition_img": "shopify:\/\/shop_images\/Nutri_Facts_pic.png",
-          "info_head": "Nutritional information and ingredients",
-          "nut_info_head": "Nutritional information",
-          "nut_info_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at molestie purus. Suspendisse vulputate rutrum tellus. Nulla facilisi. Cras id consectetur felis, et vestibulum nisi. Pellentesque et risus nibh. Vestibulum at consectetur metus. Aliquam imperdiet purus turpis, vel lacinia purus viverra eu.",
-          "ing_info_head": "Ingredients",
-          "ing_info_details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at molestie purus. Suspendisse vulputate rutrum tellus. Nulla facilisi. Cras id consectetur felis, et vestibulum nisi. Pellentesque et risus nibh. Vestibulum at consectetur metus. Aliquam imperdiet purus turpis, vel lacinia purus viverra eu."
+          "info_head": "Nutritional information and ingredients"
         }
       },
       "blog-template": {
@@ -261,6 +255,41 @@
         "type": "cart-template",
         "settings": {
           "cart_notes_enable": true
+        }
+      },
+      "product-recipes": {
+        "type": "product-recipes",
+        "blocks": {
+          "41682fae-2dff-4c2e-a0b2-aa502e080db1": {
+            "type": "header_link",
+            "settings": {
+              "recipe_heading": "PORK",
+              "page_link": "shopify:\/\/pages\/pork-recipe"
+            }
+          },
+          "09ac3b72-63f8-4809-b07b-19c47af63d90": {
+            "type": "header_link",
+            "settings": {
+              "recipe_heading": "TOFU",
+              "page_link": "shopify:\/\/pages\/pork-recipe"
+            }
+          },
+          "0750f436-fb4c-41eb-910d-a9267d093940": {
+            "type": "header_link",
+            "settings": {
+              "recipe_heading": "SHRIMP",
+              "page_link": "shopify:\/\/pages\/pork-recipe"
+            }
+          }
+        },
+        "block_order": [
+          "41682fae-2dff-4c2e-a0b2-aa502e080db1",
+          "09ac3b72-63f8-4809-b07b-19c47af63d90",
+          "0750f436-fb4c-41eb-910d-a9267d093940"
+        ],
+        "settings": {
+          "show_product_recipes": false,
+          "heading": "Product Recipes"
         }
       }
     },

@@ -63,6 +63,12 @@
           {% endif %}
 
           <h1 class="product__title h2 text-center" itemprop="name">{{ product.title }}</h1>
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  <div class="text-center">
+    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+  </div>
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+
           <p class="product__price text-center{% if current_variant_sale %} product__price--sale{% endif %}" data-product-price aria-live="polite">
 
             <span class="product__sale-price-label visually-hidden">{{ 'products.product.sale_price' | t }}</span>
@@ -134,6 +140,12 @@
         </dl> -->
       </div>
     </div>
+
+    {% comment %}Start automatically added Judge.me widget{% endcomment %}
+    <div id="judgeme_widget_box" class="page-width">
+      {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+    </div>
+    {% comment %}End automatically added Judge.me widget{% endcomment %}
 
   </div>
 
@@ -269,7 +281,8 @@
   Product Data
   ------------------------------------------------------------------------------
   {% endcomment %}
-  <script type="application/json" data-product-json>
+
+<script type="application/json" data-product-json>
     {{ product | json }}
   </script>
 
@@ -615,32 +628,30 @@
 {% endschema %}
 
 {% style %}
-  @media only screen and (min-width: 768px){
-    #wrapper {
+  #wrapper {
+  display: flex;
+  justify-content: center;
+  }
+  #image_side {
+    width: 35%;
+    margin: 0 0 0 auto;
+  }
+  #product_side {
+    width: 35%;
+    margin: 0 auto 0 0;
+  }
+  .product__media-container{
+    margin: 0 auto;
+  }
+  .product__content-main {
     display: flex;
-    justify-content: center;
-    }
-    #image_side {
-      width: 35%;
-      margin: 0 0 0 auto;
-    }
-    #product_side {
-      width: 35%;
-      margin: 0 auto 0 0;
-    }
-    .product__media-container{
-      margin: 0 auto;
-    }
-    .product__content-main {
-      display: flex;
-      flex-flow: column;
-    }
-    .product__form-container {
-      width: 100%;
-    }
-    .product__description{
-      width: 100%;
-    }
+    flex-flow: column;
+  }
+  .product__form-container {
+    width: 100%;
+  }
+  .product__description{
+    width: 100%;
   }
   
   #product_nutritions {
@@ -657,12 +668,15 @@
   #extra_info_btn{
     background-color: #f2ae78;
   }
-  dt {
-    font-weight: bold;
+  #judgeme_widget_box {
+    padding: 0 9%;
   }
   @media screen and (max-width: 767px){
     #product_nutritions {
-    padding: 0;
+      padding: 0;
+    }
+    #judgeme_widget_box {
+      padding: 0;
     }
   }
 {% endstyle %}
